@@ -13,7 +13,7 @@ npm install dbf2dsv -g
 Specify the target file with `-o` or `--out`
 
 ```shell
-dbf2dsv --out foo.tsv -- foo.dbf
+dbf2dsv --out=foo.tsv -- foo.dbf
 ```
 
 or write to `/dev/stdout` (default).
@@ -25,7 +25,7 @@ dbf2dsv -- foo.dbf > foo.tsv
 Specify a custom delimiter with `-d` or `--delimiter` (default is `\t`)
 
 ```shell
-dbf2dsv --out foo.tsv --delimiter=; -- foo.dbf
+dbf2dsv --out=foo.tsv --delimiter=";" -- foo.dbf
 ```
 
 ## Author
