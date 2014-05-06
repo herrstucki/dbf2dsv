@@ -1,0 +1,22 @@
+{
+  "name": "dbf2dsv",
+  "version": "0.0.1",
+  "description": "Convert DBF to DSV",
+  "bin": "./bin/dbf2dsv",
+  "repository": {
+    "type": "git",
+    "url": "github.com/herrstucki/dbf2dsv"
+  },
+  "keywords": [
+    "dbf",
+    "dsv",
+    "csv",
+    "tsv"
+  ],
+  "author": "Jeremy Stucki",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/herrstucki/dbf2dsv/issues"
+  },
+  "homepage": "https://github.com/herrstucki/dbf2dsv"
+}

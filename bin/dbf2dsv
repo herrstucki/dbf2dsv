@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var rw = require('rw'),
+    minimist = require('minimist'),
+    queue = require('queue-async'),
+    dbf = require('shapefile/dbf'),
+    dsv = require('dsv');
+
+var argv = minimist(process.argv.slice(2), {
+  alias: {
+    d: 'delimiter',
+    o: 'out'
+  },
+  default: {
+    d: '\t',
+    o: '/dev/stdout'
+  }
+});
+
+argv.d = argv.d.replace(/\\t/, '\t'); // Make --delimiter="\t" work
+var input = argv._[0] || '/dev/stdin';
+var formatRows = dsv(argv.d).formatRows;
+var reader = dbf.reader(input);
+
+var rows = [];
+
+queue(1)
+  .defer(readHeader)
+  .defer(readAllRecords)
+  .defer(close)
+  .await(function(error) { if (error) throw error; });
+
+function readHeader(callback) {
+  reader.readHeader(function(error, header) {
+    if (error) return callback(error);
+    rows.push(header.fields.map(function(d) { return d.name; }));
+    callback(null);
+  });
+}
+
+function readAllRecords(callback) {
+  (function readRecord() {
+    reader.readRecord(function(error, record) {
+      if (error) return callback(error);
+      if (record === dbf.end) return callback(null);
+      rows.push(record);
+      process.nextTick(readRecord);
+    });
+  })();
+}
+
+function close(callback) {
+  reader.close(function(error) {
+    if (error) return callback(error);
+    rw.writeSync(argv.o, formatRows(rows));
+    callback(null);
+  });
+}
