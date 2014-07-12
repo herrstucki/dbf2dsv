@@ -1,6 +1,6 @@
 {
   "name": "dbf2dsv",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert DBF to DSV",
   "bin": "./bin/dbf2dsv",
   "repository": {
@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/herrstucki/dbf2dsv/issues"
   },
-  "homepage": "https://github.com/herrstucki/dbf2dsv"
+  "homepage": "https://github.com/herrstucki/dbf2dsv",
+  "dependencies": {
+    "dbf": "^0.1.1",
+    "dsv": "0.0.3",
+    "minimist": "^0.2.0",
+    "queue-async": "^1.0.7",
+    "rw": "^0.1.1"
+  }
 }
