@@ -52,7 +52,7 @@ function readAllRecords(callback) {
 function close(callback) {
   reader.close(function(error) {
     if (error) return callback(error);
-    rw.writeSync(argv.o, formatRows(rows));
+    rw.writeFileSync(argv.o, formatRows(rows));
     callback(null);
   });
 }
