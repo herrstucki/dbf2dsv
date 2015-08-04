@@ -9,18 +9,20 @@ var rw = require('rw'),
 var argv = minimist(process.argv.slice(2), {
   alias: {
     d: 'delimiter',
-    o: 'out'
+    o: 'out',
+    e: 'encoding'
   },
   default: {
     d: '\t',
-    o: '/dev/stdout'
+    o: '/dev/stdout',
+    e: null
   }
 });
 
 argv.d = argv.d.replace(/\\t/, '\t'); // Make --delimiter="\t" work
 var input = argv._[0] || '/dev/stdin';
 var formatRows = dsv.dsv(argv.d).formatRows;
-var reader = dbf.reader(input);
+var reader = dbf.reader(input, argv.e);
 
 var rows = [];
 
