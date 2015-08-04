@@ -14,13 +14,13 @@
     "tsv"
   ],
   "author": "Jeremy Stucki",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/herrstucki/dbf2dsv/issues"
   },
   "homepage": "https://github.com/herrstucki/dbf2dsv",
   "dependencies": {
-    "dsv": "0.0.3",
+    "d3-dsv": "^0.1.5",
     "minimist": "^0.2.0",
     "queue-async": "^1.0.7",
     "rw": "^0.1.1",
