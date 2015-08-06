@@ -4,23 +4,25 @@ var rw = require('rw'),
     minimist = require('minimist'),
     queue = require('queue-async'),
     dbf = require('shapefile/dbf'),
-    dsv = require('dsv');
+    dsv = require('d3-dsv');
 
 var argv = minimist(process.argv.slice(2), {
   alias: {
     d: 'delimiter',
-    o: 'out'
+    o: 'out',
+    e: 'encoding'
   },
   default: {
     d: '\t',
-    o: '/dev/stdout'
+    o: '/dev/stdout',
+    e: null
   }
 });
 
 argv.d = argv.d.replace(/\\t/, '\t'); // Make --delimiter="\t" work
 var input = argv._[0] || '/dev/stdin';
-var formatRows = dsv(argv.d).formatRows;
-var reader = dbf.reader(input);
+var formatRows = dsv.dsv(argv.d).formatRows;
+var reader = dbf.reader(input, argv.e);
 
 var rows = [];
 
