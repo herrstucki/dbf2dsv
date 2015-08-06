@@ -28,6 +28,12 @@ Specify a custom delimiter with `-d` or `--delimiter` (default is `\t`)
 dbf2dsv --out=foo.tsv --delimiter=";" -- foo.dbf
 ```
 
+Specify the encoding of the DBF file `-e` or `--encoding` (default is `ISO-8859-1`)
+
+```shell
+dbf2dsv --out=foo.tsv --encoding=utf8 -- foo.dbf
+```
+
 ## Author
 
 Jeremy Stucki, [Interactive Things](http://interactivethings.com)
