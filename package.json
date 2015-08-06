@@ -1,6 +1,6 @@
 {
   "name": "dbf2dsv",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Convert DBF to DSV",
   "bin": "./bin/dbf2dsv",
   "repository": {
